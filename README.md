@@ -1,2 +1,2 @@
 # docpub
-documentPublisher
+[documentPublisher](https://oakvillage.github.io/docpub/)

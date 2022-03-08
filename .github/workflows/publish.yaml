@@ -9,9 +9,6 @@ jobs:
   document_publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: document pushlishing
       run: |
-        git status
-        git branch
+        echo aaa
         
