@@ -13,6 +13,8 @@ jobs:
     - run: |
         mkdir -p docs/sample
         touch docs/sample/sample.txt
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
         git add .
         git commit -m 'add file by ci/cd'
         git push origin main
