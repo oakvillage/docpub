@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocumentPublisher</title>
+</head>
+<body>
+    <form action="publish.html" method="POST" enctype="multipart/form-data">
+        <input type="file" name="docs" id="fileForm" multiple/>
+    </form>
+    <h3>※注意</h3>
+    <ul>
+        <li>メールアドレスや個人情報等を含んだファイルをアップロードしないで下さい。</li>
+        <li>管理者にて不正と判断したファイルは、予告無く削除します。</li>
+    </ul>
+    <script>
+        const fileForm = document.getElementById('fileForm');
+        // 選択していたファイル群を初期化
+        fileForm.value = '';
+        fileForm.addEventListener('change', () => {
+            console.log('aaa');
+            fileForm.parentElement.submit();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+name: File publish workflow
+on:
+  workflow_dispatch:
+    inputs:
+      files:
+        description: document file
+        required: true
+jobs:
+  document_publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: document pushlishing
+      run: |
+        git status
+        git branch
+        
