@@ -11,6 +11,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: |
-        git status
-        git branch
+        mkdir -p docs/sample
+        touch docs/sample/sample.txt
+        git add .
+        git commit -m 'add file by ci/cd'
+        git push origin main
         
