@@ -9,6 +9,6 @@ jobs:
   document_publish:
     runs-on: ubuntu-latest
     steps:
-      run: |
-        echo aaa
+    - run: |
+      echo "aaa"
         
