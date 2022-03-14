@@ -7,22 +7,54 @@
     <title>DocumentPublisher</title>
 </head>
 <body>
-    <form action="publish.html" method="POST" enctype="multipart/form-data">
-        <input type="file" name="docs" id="fileForm" multiple/>
-    </form>
+    <input type="file" name="docs" id="fileForm" accept=".html,.css,.js,.jpg,.png,.pdf" multiple />
     <h3>※注意</h3>
     <ul>
+        <li>対応しているファイルはhtml、css、js、jpg、pngのみとなります。</li>
         <li>メールアドレスや個人情報等を含んだファイルをアップロードしないで下さい。</li>
         <li>管理者にて不正と判断したファイルは、予告無く削除します。</li>
+        <li>当サイトは予告無く削除することがあります。その際アップロード済みファイルも削除されます。</li>
     </ul>
     <script>
+        'use strict';
         const fileForm = document.getElementById('fileForm');
         // 選択していたファイル群を初期化
         fileForm.value = '';
-        fileForm.addEventListener('change', () => {
-            console.log('aaa');
-            fileForm.parentElement.submit();
+        fileForm.addEventListener('change', event => {
+            const files = event.target.files;
+            // ファイルが選択されているか確認
+            if (files.length < 1) {
+                return false;
+            }
+            const results = getFileContents(files).then(result => {
+                console.log(result);
+            });
         });
+
+        async function getFileContents(files) {
+            const results = [];
+
+            for (const file of files) {
+                const reader = new FileReader();
+                results.push(new Promise((resolve) => {
+                    reader.onload = () => {
+                        resolve(reader.result);
+                    }
+                    let fileName = file.name.toLowerCase();
+                    if (fileName.endsWith('.html') || fileName.endsWith('.css') || fileName.endsWith('.js')) {
+                        reader.readAsText(file);
+                    } else if (fileName.endsWith('.jpg') || fileName.endsWith('.png') || fileName.endsWith('.pdf')) {
+                        reader.readAsDataURL(file);
+                    }
+                }));
+            }
+
+            return await Promise.all(results);
+        }
+
+        const getFileExt = (fileName) => {
+            return fileName.toLowerCase().split('.').pop();
+        };
     </script>
 </body>
 </html>
