@@ -9,13 +9,22 @@ jobs:
   document_publish:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python
-      uses: actions/setup-python@v2
+    - name: Git configuration
+      uses: actions/checkout@v3
       with:
-        python-version: '3.8'
-    - run: |
+        ref: main
+      run: |
         git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        python3 commit.py
+        git config --local user.name "GitHub Actions"
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.x'
+        architecture: 'x64'
+    - name: Get python version
+      run: python3 -V
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+    - name: Run python
+      run: python3 commit.py
         
