@@ -21,8 +21,6 @@ jobs:
       with:
         python-version: '3.x'
         architecture: 'x64'
-    - name: Get python version
-      run: python3 -V
     - name: Install dependencies
       run: pip install -r requirements.txt
     - name: Run python
