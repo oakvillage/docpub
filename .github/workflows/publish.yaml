@@ -24,4 +24,4 @@ jobs:
     - name: Install dependencies
       run: pip install -r requirements.txt
     - name: Run python
-      run: python3 commit.py ${{ github.event.inputs.files }}
+      run: python3 commit.py '${{ github.event.inputs.files }}'
