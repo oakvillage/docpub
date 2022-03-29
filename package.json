@@ -1,0 +1,23 @@
+{
+  "name": "docpub",
+  "version": "1.0.0",
+  "description": "[documentPublisher](https://oakvillage.github.io/docpub/)",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "server": "python -m http.server 8000 -d docs/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oakvillage/docpub.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oakvillage/docpub/issues"
+  },
+  "homepage": "https://github.com/oakvillage/docpub#readme"
+}

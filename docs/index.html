@@ -35,6 +35,7 @@
             const results = [];
 
             for (const file of files) {
+                const fileObj = {};
                 const reader = new FileReader();
                 results.push(new Promise((resolve) => {
                     reader.onload = () => {
